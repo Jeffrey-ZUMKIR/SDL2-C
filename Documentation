@@ -19,3 +19,16 @@ Voici les ajouts pour SDL2: une accélération matérielle 3D complète, support
 
 6)Pour utiliser la SDL 2 dans votre projet, vous devez initialiser l’instance SDL 2, quelles sont les étapes d’initialisation à réaliser pour utiliser la lib SDL 2, donnez le code correspondant et expliquez précisément chaque instruction.
 Avant de commencer, nous devons initialiser tout les sous-systèmes SDL que nous voulons utiliser. Pour cela nous allons utiliser la fonction SDL_Init, point de départ d'un prgramme en SDL, qui initialisera tout les sous-système que nous voulons, pour tout initialiser nous utiliserons SDL_Init(SDL_INIT_EVERYTHING). Cette fonction renverra 0 si l'initialisation c'est bien passé ou une valeur négative si non. Ajoutons donc cette fonction dans un if pour vérifier si l'initialisation c'est bien faite ou non, si oui on continue le programme. Si non on affiche l'erreur, on utilise la procedure SDL_Quit() pour détruire toutes les données relatives à la SDL et on quitte le programme.
+
+7) Comment créer une fenêtre avec SDL 2, donnez et expliquez le code correspondant à la création d’une fenêtre avec SDL 2.
+Pour la création d'une fenêtre, nous devons commencer par créer une variable de type pointeur contenant l'adresse de SDL_Window que nous initialisons à NULL. Ensuite nous rajontons une else à notre premier if pour dire, si l'initailisation c'est bien passé, nous donnons comme valeur au poiteur de la fenêtre une fenêtre avec la fonction SDL_CreateWindow(title,x,y,w,h,flags). Les paramètres sont: 
+- title correspond à une chaine de caractères étant le nom de la fenêtre
+- x correspond à la position de la fenêtre sur l'axe x de l'écran ((0,0) étant en haut à gauche)
+- y correspond à la position de la fenêtre sur l'axe y de l'écran ((0,0) étant en haut à gauche)
+- w correspond à la largeur de la fenêtre
+- h correspond à la hauteur de la fenêtre
+- flags correspond à une série de drapeaux qui permettent de choisir des options pour la fenêtre (ex: SDL_WINDOW_SHOWN)
+
+Afin d'avoir le temps de voir le rendu de la fenêtre, utilisez la fonction SDL_Delay(millisecond) (ex: SDL_Delay(1000) = 1 sec.). 
+
+Comme lorsqu'on quitte la SDL après l'avoir initialisé, il faut détruire les fenêtres avant la fin du code. Pour détruire une page nous utiliserons la fonction SDL_DestroyWindow(le pointeur de la fenêtre).
