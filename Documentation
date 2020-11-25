@@ -1,2 +1,5 @@
 1) Qu'est-ce que la SDL2?
 La SDL (Simple DirectMedia Layer) est une bibliothèque de développement multi-plateforme conçue pour fournir un accès de bas niveau à l'audio, au clavier, à la souris, au joystick et au matériel graphique via OpenGL et Direct3D. Il est utilisé par des logiciles de lecture vidéo, des émulateurs et des jeux populaires.
+
+2) Que peut faire la SDL2?
+Elle nous permet de gérer l'affichage vidéo, les évènements, l'audio numérique, la gestion des périphériques commun (clavier, souris, joystick), la lecture de CD-Audio, le multithreading, l'utilisation de timer précis. Parmi les modules disponibles pour la SDL, les plus connus sont la gestion des polices, la gestion de plusieurs formats d'images, une bibliothèque primitives pour le dessin 2D, la gestion de réseau, la rotation et le zoom sur les surfaces, la gestion de plusieurs format de sons. On peut aussi avec OpenGL qui est un ensemble normalisé de fonctions de calcul d'image 2D ou 3D (utilisé pour CS-GO ou Half-Life).
