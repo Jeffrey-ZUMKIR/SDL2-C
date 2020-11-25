@@ -81,4 +81,8 @@ SDL_WINDOW_FULLSCREEN pour mettre en plein écran
 SDL_WINDOW_FULLSCREEN_DESKTOP pour placer en plein écran à la résolution du bureau
 0 pour placer en fenêtré
 
+9) Gérer un rendu : qu’est-ce qu’un renderer, comment est-il associé à la fenêtre SDL 2 ? Donnez et expliquez le code permettant de gérer un rendu, création, affichage, effacement…
+Pour créer une renderer, il faut utiliser la fonciton SDL_Renderer *SDL_CreateRenderer(le pointeur de la fenêtre, int index, Uint32 flags). L'index correspond au pilote utiliser pour gérer le rendererer(donne -1 de base pour le laisser choisir le premier qui correspond).
+Comme pour la fenêtre, à la fin il faut le détruire donc nous utilisons la fonction void SDL_DestroyRenderer(le poiteur du renderer).
+Il est aussi possible de créer une fenêtre et un renderer à l'aide d'une seule fonction, int SDL_CreateWindowAndRenderer(int width, int height, Uint32 window_flags, pointer le pointeur de la fenêtre, pointer le pointeur du renderer).
 
