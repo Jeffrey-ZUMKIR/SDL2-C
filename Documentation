@@ -1,11 +1,14 @@
 1) Qu'est-ce que la SDL2?
 La SDL (Simple DirectMedia Layer) est une bibliothèque de développement multi-plateforme conçue pour fournir un accès de bas niveau à l'audio, au clavier, à la souris, au joystick et au matériel graphique via OpenGL et Direct3D. Il est utilisé par des logiciles de lecture vidéo, des émulateurs et des jeux populaires. La SDL2 est fournise sous une license qui autorise à l'utiliser gratuitement pour tout type d'application.
 
+
 2) Que peut faire la SDL2?
 Elle nous permet de gérer l'affichage vidéo, les évènements, l'audio numérique, la gestion des périphériques commun (clavier, souris, joystick), la lecture de CD-Audio, le multithreading, l'utilisation de timer précis. Parmi les modules disponibles pour la SDL, les plus connus sont la gestion des polices, la gestion de plusieurs formats d'images, une bibliothèque primitives pour le dessin 2D, la gestion de réseau, la rotation et le zoom sur les surfaces, la gestion de plusieurs format de sons. On peut aussi avec OpenGL qui est un ensemble normalisé de fonctions de calcul d'image 2D ou 3D (utilisé pour CS-GO ou Half-Life).
 
+
 3) Sur quelles plateformes fonctionne la SDL2?
 La SDL2 fonctionne sur Windows, Mac OS X, Linux, iOS et Android.
+
 
 4) Comment obtenir et installer la SDL2 sur un EDI?
 Se rendre sur le site internet libsdl.org et clicker sur "SDL Releases" dans la catégorie "Download". En fonction de la manière que vous désirez l'utiliser, trois catégorie s'offrent à vous. "Source Code" est le code source réel de la SDL, "Runtime libraries" sont les fichiers que vous deverez partager avec votre .exe pour permettre que votre application fonctionne en dehors du logiciel. "Development libraries" sont les fichiers qui vous permettent de développer avec de la SDL. Pour le développement nous avons donc besoin de la dernière catégorie. Unzipper votre dossier proche de vos projets pour une accès simplifié des fichiers à vos projets.
@@ -14,11 +17,14 @@ Pour pouvoir utiliser la SDL sur CodeBlocks, vous devez commencez par inclure da
 Après avoir ajouté ces deux fichiers, clicker sur "Search directories" et dans la catégorie "Compiler" ajouter le dossier include présent dans le même dossier que le dossier "lib". Ensuite clicker sur "Linker" et ajouter le dossier "lib". Ajouter dans votre main.c dans les include #include <SDL2/SDL.h>. Ensuite, rajouter deux arguments dans votre main, un integer et un tableau de caractère (ex: int argc, char *argv[]).
 Compilez une première fois votre projet et retournez dans votre dossier SDL dans le même dossier où se trouvent le dossier "include" et "lib" et clicker sur le dossier "bin". Copiez le fichier "SDL"2.dll" et collez le dans le dossier "bin" puis "Debug" de votre projet. Vous êtes prêt à utiliser la SDL sur CodeBlocks.
 
+
 5) Quelles sont les différences entre SDL1 et SDL2?
 Voici les ajouts pour SDL2: une accélération matérielle 3D complète, support OpenGL, soutien aux fenêtres multiples, prise en charge de plusieurs appareils audio, support d'enregistrement audio, support Android et iOS, API de rendu 2D simple, retour de force, prise en charge de XInput et Xaudio2 pour Windows, opérations atomiques, gestion de l'énergie, fenêtres en forme, audio 32 bits, API simplifié de la manette de jeu, support tactile, meilleur soutien au plein écran, meilleur prise en charge du clavier, boîtes à messages, support presse-papiers, API pour création de boîtes à outils graphiques robustes, soutien Drag'n'Drop, macro affirmation puissante, licence zlib, fix de désagréments.
 
+
 6)Pour utiliser la SDL 2 dans votre projet, vous devez initialiser l’instance SDL 2, quelles sont les étapes d’initialisation à réaliser pour utiliser la lib SDL 2, donnez le code correspondant et expliquez précisément chaque instruction.
 Avant de commencer, nous devons initialiser tout les sous-systèmes SDL que nous voulons utiliser. Pour cela nous allons utiliser la fonction SDL_Init, point de départ d'un prgramme en SDL, qui initialisera tout les sous-système que nous voulons, pour tout initialiser nous utiliserons SDL_Init(SDL_INIT_EVERYTHING). Cette fonction renverra 0 si l'initialisation c'est bien passé ou une valeur négative si non. Ajoutons donc cette fonction dans un if pour vérifier si l'initialisation c'est bien faite ou non, si oui on continue le programme. Si non on affiche l'erreur, on utilise la procedure SDL_Quit() pour détruire toutes les données relatives à la SDL et on quitte le programme.
+
 
 7) Comment créer une fenêtre avec SDL 2, donnez et expliquez le code correspondant à la création d’une fenêtre avec SDL 2.
 Pour la création d'une fenêtre, nous devons commencer par créer une variable de type pointeur contenant l'adresse de SDL_Window que nous initialisons à NULL. Ensuite nous rajontons une else à notre premier if pour dire, si l'initailisation c'est bien passé, nous donnons comme valeur au poiteur de la fenêtre une fenêtre avec la fonction SDL_CreateWindow(title,x,y,w,h,flags). Les paramètres sont: 
@@ -32,3 +38,47 @@ Pour la création d'une fenêtre, nous devons commencer par créer une variable 
 Afin d'avoir le temps de voir le rendu de la fenêtre, utilisez la fonction SDL_Delay(millisecond) (ex: SDL_Delay(1000) = 1 sec.). 
 
 Comme lorsqu'on quitte la SDL après l'avoir initialisé, il faut détruire les fenêtres avant la fin du code. Pour détruire une page nous utiliserons la fonction SDL_DestroyWindow(le pointeur de la fenêtre).
+
+
+8)Gestion d'une fenêtre SDL2, donnez les primitives associés à la fenêtre SDL2.
+https://zestedesavoir.com/tutoriels/1014/utiliser-la-sdl-en-langage-c/les-premieres-fenetres/#1-initialiser-la-sdl
+A la création de la fenêtre, nous avons donner des valeurs pour des paramètres et il est possible de les modifiers. Les fonctions pour récupérer ses données sont construites de la même manière.
+- SDL_SetWindow permet de changer les paramètres 
+- SDL_GetWindow permet d'obtenir les paramètres
+- le premier paramètre de toutes ces fonctions est un pointeur sur SDL_Window, càd la fenêtre concernée
+
+Le title
+La fonction char *SDL_GetWindowTitle(le pointeur de la fenêtre) permet de récupérer la valeur du title.
+La fonction void SDL_SetWindowTitle(le pointeur de la fenêtre, chaine de caractère) permet de donner une nouvelle valeur au titre.
+
+La position
+La fonction void SDL_GetWindowPosition(le pointer de la fenêtre, pointeur x, pointeur y) permet de récupérer la position de la fenêtre.
+La fonction void SDL_SetWindowPosition(le pointeur de la fenêtre, int x, int y) permet de donner deux nouvelles valeurs pour une nouvelle position.
+
+La taille 
+La fonction void SDL_GetWindowSize(le pointeur de la fenêtre, pointeur w, pointeur h) permet de récupérer la taille de la fenêtre.
+La fonction void SDL_SetWindowSize(le pointeur de la fenêtre, int w, int h) permet de modifier la taille de la fenêtre.
+
+Les drapeaux
+La fonction int SDL_GetWindowFlags(le pointeur de la fenêtre) récupère une valeur entière comme pour le SDL_Init. Pour savoir si un drapeau est présent, il faut tout simplement utiliser l’opérateur & avec le drapeau et le retour de la fonction. 
+Ex:
+Uint32 retour = SDL_GetWindowFlags(window);
+if(retour & SDL_WINDOW_RESIZABLE){
+    printf("La fenetre est redimensionnable");
+}
+Pour agir sur les drapeaux de la fenêtre, il n'existe pas de SDL_SetWindowFlags(). MAis on dispose de plusieurs fonctions pour des actions pour agrandir, réduit et restaurer la fenêtre.
+Agrandir: void SDL_MaximizeWindow(le pointeur de la fenêtre)
+Réduire: void SDL_MinimizeWindow(le pointeur de la fenêtre)
+Réstaurer: void SDL_RestoreWindow(le pointeur de la fenêtre)
+
+Pour gérer la visibilité de la fenêtre, nous pouvons la cachée, la rendre visible et la faire passer devant toutes les autres fenêtres.
+Cacher: void SDL_HideWindow(le pointeur de la fenêtre)
+Visible: void SDL_ShowWindow(le pointeur de la fenêtre)
+Devant: void SDL_RaiseWindow(le pointeur de la fenêtre)
+
+Pour gérer le plein écran nous utilisons la fonciton int SDL_SetWindowFullscreen(le pointeur de la fenêtre, flag). Le flag peut être:
+SDL_WINDOW_FULLSCREEN pour mettre en plein écran
+SDL_WINDOW_FULLSCREEN_DESKTOP pour placer en plein écran à la résolution du bureau
+0 pour placer en fenêtré
+
+
