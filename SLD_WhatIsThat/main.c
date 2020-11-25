@@ -5,7 +5,14 @@
 
 
 int main(int argc, char *argv[])
-{
-    printf("Hello world!\n");
+{   //Vérification si l'initialisation s'est mal passé
+    if(SDL_Init(SDL_INIT_EVERYTHING)!=0){
+        //Afficher les erreurs arrivés
+        SDL_Log("Unbale to initialize SDL: %s", SDL_GetError());
+        //Détruire toute les données relatives à la SDL
+        SDL_Quit();
+        //Sortir du programme
+        return 1;
+    }
     return 0;
 }
