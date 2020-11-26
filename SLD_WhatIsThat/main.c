@@ -5,6 +5,10 @@
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 780
 
+void DrawRectLine(SDL_Rect rect);
+void DrawRect(SDL_Rect rect);
+void DrawRectFilled(SDL_Rect rect);
+
 SDL_Window *pWindow=NULL;
 SDL_Renderer *pRenderer=NULL;
 
@@ -84,7 +88,7 @@ int main(int argc, char *argv[])
     SDL_Point point1={0,0};
     //Créer un rect
     SDL_Rect rect;
-    rect.h=50;
+    rect.h=100;
     rect.w=100;
     rect.x=20;
     rect.y=20;
@@ -96,8 +100,13 @@ int main(int argc, char *argv[])
         SDL_RenderPresent(pRenderer);//mettre à jour le renderer
     }
 
-
-
+    //Draw rect
+    //Draw avec des lignes
+    //DrawRectLine(rect);
+    //Draw avec la fonction SDL_RenderDrawRect()
+    DrawRect(rect);
+    //Draw avec la fonction SDL_RenderFillRect
+    DrawRectFilled(rect);
 
 
     //Permet de garder le rendu de la page pendant x temps
@@ -112,4 +121,25 @@ int main(int argc, char *argv[])
     }
 
     return 0;
+}
+
+void DrawRectLine(SDL_Rect rect){
+    SDL_SetRenderDrawColor(pRenderer,0,0,0,255);
+    SDL_RenderDrawLine(pRenderer,rect.x,rect.y,rect.x+rect.w,rect.y);
+    SDL_RenderDrawLine(pRenderer,rect.x+rect.w,rect.y,rect.x+rect.w,rect.y+rect.h);
+    SDL_RenderDrawLine(pRenderer,rect.x+rect.w,rect.y+rect.h,rect.x,rect.y+rect.h);
+    SDL_RenderDrawLine(pRenderer,rect.x,rect.y+rect.h,rect.x,rect.y);
+    SDL_RenderPresent(pRenderer);
+
+}
+void DrawRect(SDL_Rect rect){
+    SDL_SetRenderDrawColor(pRenderer,0,0,0,255);
+    SDL_RenderDrawRect(pRenderer,&rect);
+    SDL_RenderPresent(pRenderer);
+}
+
+void DrawRectFilled(SDL_Rect rect){
+    SDL_SetRenderDrawColor(pRenderer,0,0,0,255);
+    SDL_RenderFillRect(pRenderer,&rect);
+    SDL_RenderPresent(pRenderer);
 }

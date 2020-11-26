@@ -106,3 +106,10 @@ Le système de couleur est basé sur le RGBA et il existe une structure SDL_Colo
 
 12)Donnez le code permettant d’afficher un fond rouge dans le rendu.
 Voir code
+
+13)Dessiner dans le rendu : donnez le code des fonctions permettant de dessiner dans le rendu les formes suivantes :
+- Carré vide
+- Carré plein
+- Cercle vide
+- Cercle plein.
+
