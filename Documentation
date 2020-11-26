@@ -113,3 +113,11 @@ Voir code
 - Cercle vide
 - Cercle plein.
 
+14)Quelles sont les fonctions permettant de dessiner des points et des lignes ?
+Pour cela, nous allons choisir notre couleur, puis utiliser la fonction SDL_RenderDrawPoint. Elle prend en paramètre le renderer sur lequel dessiner et les coordonnées du point à dessiner et retourne 0 en cas de succès et une valeur négative en cas d’erreur.
+Et si nous avons besoin d’afficher plusieurs points d’un coup (donc de la même couleur), la SDL propose la fonction SDL_RenderDrawPoints. Elle prend en paramètre le renderer sur lequel dessiner, un tableau de SDL_Point et le nombre de points à dessiner (donc ce nombre doit être plus petit ou égal à la taille de ce tableau). Elle retourne comme d’habitude une valeur négative en cas d’erreur et 0 en cas de succès.
+La SDL possède une fonction pour tracer un segment, la fonction SDL_RenderDrawLine. Elle prend en paramètre le renderer sur lequel dessiner le segment et les coordonnées des deux points à relier. Elle retourne comme d’habitude 0 en cas de succès et une valeur négative en cas d’erreur.
+Et là encore, on peut dessiner plusieurs lignes à l’aide de la fonction SDL_RenderDrawLines. Elle prend en paramètre le renderer, un tableau de points et la taille de ce tableau. Elle retourne (encore une fois) 0 en cas de succès et une valeur négative en cas d’erreur.
+
+
+
