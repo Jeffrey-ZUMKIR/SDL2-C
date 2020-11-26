@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
     //Paramètre d'une fenêtre
     //title
-    /*if(pWindow){
+   /* if(pWindow){
         const char *thetitle=SDL_GetWindowTitle(pWindow);
         printf("%s\n", thetitle);
         SDL_SetWindowTitle(pWindow,"new title");
@@ -89,8 +89,11 @@ int main(int argc, char *argv[])
     rect.x=20;
     rect.y=20;
 
+    SDL_Color red={255,0,0,255};
     if(pRenderer){
-
+        SDL_SetRenderDrawColor(pRenderer, red.r, red.g, red.b, red.a);//Donner la couleur
+        SDL_RenderClear(pRenderer);//Effacer entièrement le renderer
+        SDL_RenderPresent(pRenderer);//mettre à jour le renderer
     }
 
 

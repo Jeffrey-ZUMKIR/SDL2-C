@@ -104,4 +104,5 @@ Le rectangle a toujours ses côtés parallèles aux axes. Ce rectangle est repr�
 11)Les couleurs avec la SDL2 :
 Le système de couleur est basé sur le RGBA et il existe une structure SDL_Color reprennant ces 4 composants (rouge, vert, bleu et alpha(transparence)).
 
-
+12)Donnez le code permettant d’afficher un fond rouge dans le rendu.
+Voir code
