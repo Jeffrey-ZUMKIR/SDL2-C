@@ -3,11 +3,11 @@ La SDL (Simple DirectMedia Layer) est une bibliothèque de développement multi-
 
 
 2) Que peut faire la SDL2?
-Elle nous permet de gérer l'affichage vidéo, les évènements, l'audio numérique, la gestion des périphériques commun (clavier, souris, joystick), la lecture de CD-Audio, le multithreading, l'utilisation de timer précis. Parmi les modules disponibles pour la SDL, les plus connus sont la gestion des polices, la gestion de plusieurs formats d'images, une bibliothèque primitives pour le dessin 2D, la gestion de réseau, la rotation et le zoom sur les surfaces, la gestion de plusieurs format de sons. On peut aussi avec OpenGL qui est un ensemble normalisé de fonctions de calcul d'image 2D ou 3D (utilisé pour CS-GO ou Half-Life).
+Elle nous permet de gérer l'affichage vidéo(nécessite un API annexe), les évènements, l'audio numérique, la gestion des périphériques commun (clavier, souris, joystick), la lecture de CD-Audio, le multithreading, l'utilisation de timer précis. Parmi les modules disponibles pour la SDL, les plus connus sont la gestion des polices, la gestion de plusieurs formats d'images, une bibliothèque primitives pour le dessin 2D, la gestion de réseau, la rotation et le zoom sur les surfaces, la gestion de plusieurs format de sons. On peut aussi avec OpenGL qui est un ensemble normalisé de fonctions de calcul d'image 2D ou 3D (utilisé pour CS-GO ou Half-Life).
 
 
 3) Sur quelles plateformes fonctionne la SDL2?
-La SDL2 fonctionne sur Windows, Mac OS X, Linux, iOS et Android.
+La SDL2 fonctionne sur Windows, Mac OS X, Linux, iOS, Android et autres.
 
 
 4) Comment obtenir et installer la SDL2 sur un EDI?
@@ -85,4 +85,22 @@ SDL_WINDOW_FULLSCREEN_DESKTOP pour placer en plein écran à la résolution du b
 Pour créer une renderer, il faut utiliser la fonciton SDL_Renderer *SDL_CreateRenderer(le pointeur de la fenêtre, int index, Uint32 flags). L'index correspond au pilote utiliser pour gérer le rendererer(donne -1 de base pour le laisser choisir le premier qui correspond).
 Comme pour la fenêtre, à la fin il faut le détruire donc nous utilisons la fonction void SDL_DestroyRenderer(le poiteur du renderer).
 Il est aussi possible de créer une fenêtre et un renderer à l'aide d'une seule fonction, int SDL_CreateWindowAndRenderer(int width, int height, Uint32 window_flags, pointer le pointeur de la fenêtre, pointer le pointeur du renderer).
+
+10)SDL_Point et SDL_Rect :
+Comme en mathématiques, on représente un point avec son abscisse et son ordonnée. Ainsi, un point est représenté en SDL par une structure qui a pour champ ces deux composantes. Il s’agit de la structure SDL_Point. Ses champs :
+-x représente l’abscisse du point ;
+-y représente l’ordonnée du point.
+
+SDL_Point point = {0, 0}
+
+Pour définir un rectangle:
+Le rectangle a toujours ses côtés parallèles aux axes. Ce rectangle est représenté grâce à la structure SDL_Rect. Ses champs :
+
+-x représente l’abscisse du coin en haut à gauche du rectangle ;
+-y représente l’ordonnée du coin en haut à gauche du rectangle ;
+-w représente la largeur du rectangle ;
+-h représente la hauteur du rectangle.
+
+
+
 

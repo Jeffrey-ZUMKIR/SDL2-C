@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
     //Paramètre d'une fenêtre
     //title
-    if(pWindow){
+    /*if(pWindow){
         const char *thetitle=SDL_GetWindowTitle(pWindow);
         printf("%s\n", thetitle);
         SDL_SetWindowTitle(pWindow,"new title");
@@ -77,7 +77,18 @@ int main(int argc, char *argv[])
         SDL_Delay(1000);
         SDL_RaiseWindow(pWindow);
         //Chercher comment fonctionne le SDL_SetWindowFullscreen
-    }
+    }*/
+
+    //Point et rect
+    //Créer un point
+    SDL_Point point1={0,0};
+    //Créer un rect
+    SDL_Rect rect;
+    rect.h=50;
+    rect.w=100;
+    rect.x=20;
+    rect.y=20;
+
     if(pRenderer){
 
     }
