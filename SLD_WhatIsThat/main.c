@@ -8,6 +8,7 @@
 void DrawRectLine(SDL_Rect rect);
 void DrawRect(SDL_Rect rect);
 void DrawRectFilled(SDL_Rect rect);
+void DrawCircle(int cx, int cy, int rayon);
 
 SDL_Window *pWindow=NULL;
 SDL_Renderer *pRenderer=NULL;
@@ -108,7 +109,11 @@ int main(int argc, char *argv[])
     //DrawRect(rect);
     //Draw avec la fonction SDL_RenderFillRect
     //DrawRectFilled(rect);
-
+    //Draw circle
+    //Point par point
+    SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
+    DrawCircle(100,100,50);
+    SDL_RenderPresent(pRenderer);
 
 
 
@@ -117,7 +122,7 @@ int main(int argc, char *argv[])
 
 
     //Les surfaces
-    pSurface = SDL_CreateRGBSurface(0, 300, 200, 32, 0, 0, 0, 0);
+    /*pSurface = SDL_CreateRGBSurface(0, 300, 200, 32, 0, 0, 0, 0);
     if(NULL == pSurface)
     {
         fprintf(stderr, "Erreur SDL_CreateRGBSurface : %s", SDL_GetError());
@@ -125,14 +130,14 @@ int main(int argc, char *argv[])
     }
     //Ne fonctionne pas
     SDL_Rect rect2={50,50,300,300};
-    SDL_FillRect(pSurface, NULL, SDL_MapRGB(pSurface->format, 0, 0, 0));
+    SDL_FillRect(pSurface, NULL, SDL_MapRGB(pSurface->format, 0, 0, 0));*/
 
 
 
 
 
     //Permet de garder le rendu de la page pendant x temps
-    SDL_Delay(1000);//1 sec
+    SDL_Delay(10000);//1 sec
     //Vérification si il y a bien une fenêtre
     if(pSurface){
         SDL_FreeSurface(pSurface);
@@ -167,4 +172,31 @@ void DrawRectFilled(SDL_Rect rect){
     SDL_SetRenderDrawColor(pRenderer,0,0,0,255);
     SDL_RenderFillRect(pRenderer,&rect);
     SDL_RenderPresent(pRenderer);
+}
+
+void DrawCircle(int cx, int cy, int rayon){
+    int d, y, x;
+
+    d=3-(2*rayon);
+    x=0;
+    y=rayon;
+
+    while(y>=x){
+        SDL_RenderDrawPoint(pRenderer,cx + x,cy + y);
+        SDL_RenderDrawPoint(pRenderer,cx + y,cy + x);
+        SDL_RenderDrawPoint(pRenderer,cx - x,cy + y);
+        SDL_RenderDrawPoint(pRenderer,cx - y,cy + x);
+        SDL_RenderDrawPoint(pRenderer,cx + x,cy - y);
+        SDL_RenderDrawPoint(pRenderer,cx + y,cy - x);
+        SDL_RenderDrawPoint(pRenderer,cx - x,cy - y);
+        SDL_RenderDrawPoint(pRenderer,cx - y,cy - x);
+
+        if(d<0){
+            d=d+(4*x)+6;
+        }else{
+            d=d+4*(x-y)+10;
+            y--;
+        }
+        x++;
+    }
 }
