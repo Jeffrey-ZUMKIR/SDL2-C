@@ -138,3 +138,6 @@ La création de surface se fait avec la fonction SDL_CreateRGBSurface. SDL_Creat
 -les quatre derniers paramètres permettent à la SDL de savoir comment extraire la couleur de chaque pixel. Nous allons passer la valeur 0 -pour ces quatre paramètres.
 
 Comme les autres ressources, il nous faut détruire chaque surface créée. La libération des données se fait avec la fonction SDL_FreeSurface. SDL_FreeSurface(SDL_Surface *surface).
+
+19)Dessiner dans une surface : Donnez le code de la fonction SDL_FillRect:
+La SDL nous offre des fonctions pour dessiner sur des surfaces, mais il y en a beaucoup moins que celles pour dessiner sur les textures. En fait, il n’y en a qu’une seule. Il s’agit de la fonction SDL_FillRect qui nous permet, comme son nom l’indique, de « remplir » un rectangle avec une couleur. int SDL_FillRect(SDL_Surface *dst, SDL_Rect *rect, Uint32 color). Elle prend en paramètre la surface qui doit être remplie, un pointeur sur SDL_Rect qui représente la partie de la surface à remplir (en passant NULL, on demande à remplir toute la surface) et la couleur voulue. Elle retourne 0 en cas de succès et une valeur négative en cas d’erreur.

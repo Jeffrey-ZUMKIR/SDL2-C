@@ -105,9 +105,9 @@ int main(int argc, char *argv[])
     //Draw avec des lignes
     //DrawRectLine(rect);
     //Draw avec la fonction SDL_RenderDrawRect()
-    DrawRect(rect);
+    //DrawRect(rect);
     //Draw avec la fonction SDL_RenderFillRect
-    DrawRectFilled(rect);
+    //DrawRectFilled(rect);
 
 
 
@@ -123,10 +123,9 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Erreur SDL_CreateRGBSurface : %s", SDL_GetError());
         return 1;
     }
-
-
-
-
+    //Ne fonctionne pas
+    SDL_Rect rect2={50,50,300,300};
+    SDL_FillRect(pSurface, NULL, SDL_MapRGB(pSurface->format, 0, 0, 0));
 
 
 
