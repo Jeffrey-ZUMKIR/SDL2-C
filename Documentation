@@ -128,3 +128,13 @@ La fonction permet de créer une temps de pause de x millie seconde.
 
 17)Qu’est-ce qu’une surface en SDL 2?
 Les surfaces sont l’équivalent des textures dans les anciennes versions de la SDL. On représente une surface avec le type SDL_Surface. La plus grande différence entre les surfaces et les textures est que les textures sont gérées par le GPU et les surfaces par le CPU. Elles peuvent être modifiées pixel par pixel plus facilement que les textures. Mais là où elles nous seront utiles, c’est pour gérer les images.
+
+18)Donnez le code permettant de créer une surface:
+La création de surface se fait avec la fonction SDL_CreateRGBSurface. SDL_CreateRGBSurface(uint32 flags, int width, int height, int depth, uint32 Rmask, uint32 Gmask, uint32 Bmask, uint32 Amask). Elle prend en paramètre :
+-une liste de drapeaux (ce paramètre doit être à 0) ;
+-la largeur de la surface ;
+-la hauteur de la surface ;
+-le nombre de bits par pixels (en général, on travaille avec 32 bits par pixels) ;
+-les quatre derniers paramètres permettent à la SDL de savoir comment extraire la couleur de chaque pixel. Nous allons passer la valeur 0 -pour ces quatre paramètres.
+
+Comme les autres ressources, il nous faut détruire chaque surface créée. La libération des données se fait avec la fonction SDL_FreeSurface. SDL_FreeSurface(SDL_Surface *surface).

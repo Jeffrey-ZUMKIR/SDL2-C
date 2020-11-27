@@ -11,6 +11,7 @@ void DrawRectFilled(SDL_Rect rect);
 
 SDL_Window *pWindow=NULL;
 SDL_Renderer *pRenderer=NULL;
+SDL_Surface *pSurface = NULL;
 
 int main(int argc, char *argv[])
 {   //Vérification si l'initialisation s'est mal passé
@@ -109,9 +110,34 @@ int main(int argc, char *argv[])
     DrawRectFilled(rect);
 
 
+
+
+
+
+
+
+    //Les surfaces
+    pSurface = SDL_CreateRGBSurface(0, 300, 200, 32, 0, 0, 0, 0);
+    if(NULL == pSurface)
+    {
+        fprintf(stderr, "Erreur SDL_CreateRGBSurface : %s", SDL_GetError());
+        return 1;
+    }
+
+
+
+
+
+
+
+
+
     //Permet de garder le rendu de la page pendant x temps
     SDL_Delay(1000);//1 sec
     //Vérification si il y a bien une fenêtre
+    if(pSurface){
+        SDL_FreeSurface(pSurface);
+    }
     if(pRenderer){
         SDL_DestroyRenderer(pRenderer);
     }
