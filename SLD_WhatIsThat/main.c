@@ -9,6 +9,7 @@ void DrawRectLine(SDL_Rect rect);
 void DrawRect(SDL_Rect rect);
 void DrawRectFilled(SDL_Rect rect);
 void DrawCircle(int cx, int cy, int rayon);
+void DrawCircleFilled(int cx, int cy, int rayon);
 
 SDL_Window *pWindow=NULL;
 SDL_Renderer *pRenderer=NULL;
@@ -112,7 +113,8 @@ int main(int argc, char *argv[])
     //Draw circle
     //Point par point
     SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
-    DrawCircle(100,100,50);
+    //DrawCircle(100,100,50);
+    DrawCircleFilled(100,100,50);
     SDL_RenderPresent(pRenderer);
 
 
@@ -190,6 +192,33 @@ void DrawCircle(int cx, int cy, int rayon){
         SDL_RenderDrawPoint(pRenderer,cx + y,cy - x);
         SDL_RenderDrawPoint(pRenderer,cx - x,cy - y);
         SDL_RenderDrawPoint(pRenderer,cx - y,cy - x);
+
+        if(d<0){
+            d=d+(4*x)+6;
+        }else{
+            d=d+4*(x-y)+10;
+            y--;
+        }
+        x++;
+    }
+}
+
+void DrawCircleFilled(int cx, int cy, int rayon){
+    int d, y, x;
+
+    d=3-(2*rayon);
+    x=0;
+    y=rayon;
+
+    while(y>=x){
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx + x,cy + y);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx + y,cy + x);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - x,cy + y);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - y,cy + x);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx + x,cy - y);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx + y,cy - x);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - x,cy - y);
+        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - y,cy - x);
 
         if(d<0){
             d=d+(4*x)+6;
