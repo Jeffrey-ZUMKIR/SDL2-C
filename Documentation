@@ -119,5 +119,8 @@ Et si nous avons besoin d’afficher plusieurs points d’un coup (donc de la m�
 La SDL possède une fonction pour tracer un segment, la fonction SDL_RenderDrawLine. Elle prend en paramètre le renderer sur lequel dessiner le segment et les coordonnées des deux points à relier. Elle retourne comme d’habitude 0 en cas de succès et une valeur négative en cas d’erreur.
 Et là encore, on peut dessiner plusieurs lignes à l’aide de la fonction SDL_RenderDrawLines. Elle prend en paramètre le renderer, un tableau de points et la taille de ce tableau. Elle retourne (encore une fois) 0 en cas de succès et une valeur négative en cas d’erreur.
 
+15)A quoi servent les fonctions SDL_RenderClear et SDL_RenderPresent?
+La fonction SDL_RenderClear permet d'effacer le renderer avec la couleur souhaité. Elle prend en paramètre le renderer qui doit être nettoyé et renvoie 0 en cas de succès et une valeur négative sinon.
+La fonciton SDL_RenderPresent permet de mettre à jour l'écran. Elle prend en paramètre le renderer à mettre à jour et ne retourne rien.
 
 
