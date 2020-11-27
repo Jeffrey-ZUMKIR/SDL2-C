@@ -141,3 +141,12 @@ Comme les autres ressources, il nous faut détruire chaque surface créée. La l
 
 19)Dessiner dans une surface : Donnez le code de la fonction SDL_FillRect:
 La SDL nous offre des fonctions pour dessiner sur des surfaces, mais il y en a beaucoup moins que celles pour dessiner sur les textures. En fait, il n’y en a qu’une seule. Il s’agit de la fonction SDL_FillRect qui nous permet, comme son nom l’indique, de « remplir » un rectangle avec une couleur. int SDL_FillRect(SDL_Surface *dst, SDL_Rect *rect, Uint32 color). Elle prend en paramètre la surface qui doit être remplie, un pointeur sur SDL_Rect qui représente la partie de la surface à remplir (en passant NULL, on demande à remplir toute la surface) et la couleur voulue. Elle retourne 0 en cas de succès et une valeur négative en cas d’erreur.
+
+20)SDL_BlitSurface(..) : donnez le code pour tester cette méthode.
+Une autre opération possible sur les surfaces est le « blit ». Cette opération consiste à copier une surface (ou une partie d’une surface) sur une autre surface. On peut donc la voir comme l’équivalent de SDL_RenderCopy. Le blit s’effectue grâce à la fonction SDL_BlitSurface. int SDL_BlitSurface(SDL_Surface* src, const SDL_Rect* srcrect, SDL_Surface* dst, SDL_Rect* dstrect).Ses différents paramètres sont :
+-src, la surface source est la surface qui sera copiée ;
+-srcrect est le rectangle source, c’est-à-dire la partie de la surface source qui sera copiée ;
+-dst est la surface de destination, celle sur laquelle sera copiée la source ;
+-dstrect est le rectangle de destination, celui où sera copiée la source.
+
+
