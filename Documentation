@@ -125,3 +125,6 @@ La fonciton SDL_RenderPresent permet de mettre à jour l'écran. Elle prend en p
 
 16)Expliquez SDL_Delay:
 La fonction permet de créer une temps de pause de x millie seconde.
+
+17)Qu’est-ce qu’une surface en SDL 2?
+Les surfaces sont l’équivalent des textures dans les anciennes versions de la SDL. On représente une surface avec le type SDL_Surface. La plus grande différence entre les surfaces et les textures est que les textures sont gérées par le GPU et les surfaces par le CPU. Elles peuvent être modifiées pixel par pixel plus facilement que les textures. Mais là où elles nous seront utiles, c’est pour gérer les images.
