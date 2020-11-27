@@ -123,4 +123,5 @@ Et là encore, on peut dessiner plusieurs lignes à l’aide de la fonction SDL_
 La fonction SDL_RenderClear permet d'effacer le renderer avec la couleur souhaité. Elle prend en paramètre le renderer qui doit être nettoyé et renvoie 0 en cas de succès et une valeur négative sinon.
 La fonciton SDL_RenderPresent permet de mettre à jour l'écran. Elle prend en paramètre le renderer à mettre à jour et ne retourne rien.
 
-
+16)Expliquez SDL_Delay:
+La fonction permet de créer une temps de pause de x millie seconde.
