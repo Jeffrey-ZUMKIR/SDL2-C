@@ -163,7 +163,8 @@ int main(int argc, char *argv[])
 
     SDL_RenderFillRect(pRenderer, &rect);
     SDL_SetRenderTarget(pRenderer, NULL);
-    SDL_RenderCopy(pRenderer, pTexture, NULL, NULL);
+    SDL_QueryTexture(pTexture,NULL,NULL,&rect.w,&rect.h);
+    SDL_RenderCopy(pRenderer, pTexture, NULL, &rect);
     SDL_RenderPresent(pRenderer);
 
 
