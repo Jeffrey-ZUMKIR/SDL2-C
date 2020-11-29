@@ -14,24 +14,25 @@ void DrawCircleFilled(int cx, int cy, int rayon);
 SDL_Window *pWindow=NULL;
 SDL_Renderer *pRenderer=NULL;
 SDL_Surface *pSurface = NULL;
+SDL_Texture *pTexture=NULL;
 
 int main(int argc, char *argv[])
-{   //Vérification si l'initialisation s'est mal passé
+{   //VÃ©rification si l'initialisation s'est mal passÃ©
     if(SDL_Init(SDL_INIT_EVERYTHING)!=0){
-        //Afficher les erreurs arrivés
+        //Afficher les erreurs arrivÃ©s
         SDL_Log("Unbale to initialize SDL: %s", SDL_GetError());
-        //Détruire toute les données relatives à la SDL
+        //DÃ©truire toute les donnÃ©es relatives Ã  la SDL
         SDL_Quit();
         //Sortir du programme
         return 1;
     }else{
-        //Création d'une fenêtre
+        //CrÃ©ation d'une fenÃªtre
         /*pWindow=SDL_CreateWindow("An SDL2 window",600,100,WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN);
-        //C'éation d'un renderer
+        //C'Ã©ation d'un renderer
         if(pWindow){
             pRenderer=SDL_CreateRenderer(pWindow,-1,SDL_RENDERER_PRESENTVSYNC);
         }*/
-        //Création d'une fenêtre et d'un renderer
+        //CrÃ©ation d'une fenÃªtre et d'un renderer
         if(SDL_CreateWindowAndRenderer(WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN,&pWindow,&pRenderer)){
             SDL_DestroyRenderer(pRenderer);
             SDL_DestroyWindow(pWindow);
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
 
     }
 
-    //Paramètre d'une fenêtre
+    //ParamÃ¨tre d'une fenÃªtre
     //title
    /* if(pWindow){
         const char *thetitle=SDL_GetWindowTitle(pWindow);
@@ -87,9 +88,9 @@ int main(int argc, char *argv[])
     }*/
 
     //Point et rect
-    //Créer un point
+    //CrÃ©er un point
     SDL_Point point1={0,0};
-    //Créer un rect
+    //CrÃ©er un rect
     SDL_Rect rect;
     rect.h=100;
     rect.w=100;
@@ -99,8 +100,8 @@ int main(int argc, char *argv[])
     SDL_Color red={255,0,0,255};
     if(pRenderer){
         SDL_SetRenderDrawColor(pRenderer, red.r, red.g, red.b, red.a);//Donner la couleur
-        SDL_RenderClear(pRenderer);//Effacer entièrement le renderer
-        SDL_RenderPresent(pRenderer);//mettre à jour le renderer
+        SDL_RenderClear(pRenderer);//Effacer entiÃ¨rement le renderer
+        //SDL_RenderPresent(pRenderer);//mettre Ã  jour le renderer
     }
 
     //Draw rect
@@ -114,8 +115,8 @@ int main(int argc, char *argv[])
     //Point par point
     SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
     //DrawCircle(100,100,50);
-    DrawCircleFilled(100,100,50);
-    SDL_RenderPresent(pRenderer);
+    //DrawCircleFilled(100,100,50);
+    //SDL_RenderPresent(pRenderer);
 
 
 
@@ -135,12 +136,45 @@ int main(int argc, char *argv[])
     SDL_FillRect(pSurface, NULL, SDL_MapRGB(pSurface->format, 0, 0, 0));*/
 
 
+    // Dessine le cercle donnÃ©, rempli
+    /*void DrawFillCircle(SDL_Renderer *p_renderer, int origin_x, int origin_y, int radius, SDL_Color color)
+    {â€‹â€‹â€‹â€‹
+        for(double dy = 1; dy <= radius; dy += 1.0){â€‹â€‹â€‹â€‹
+
+            double dx = floor(sqrt((2.0 * radius * dy) - (dy * dy)));
+
+            SDL_SetRenderDrawColor(p_renderer, color.r, color.g, color.b, color.a);
+            SDL_RenderDrawLine(p_renderer, origin_x - dx, origin_y + dy - radius, origin_x + dx, origin_y + dy - radius);
+            SDL_RenderDrawLine(p_renderer, origin_x - dx, origin_y - dy + radius, origin_x + dx, origin_y - dy + radius);
+
+        }â€‹â€‹â€‹â€‹
+        SDL_SetRenderDrawColor(p_renderer, 0, 0, 0, 0);
+    }â€‹â€‹â€‹â€‹*/
+
+    //Les textures
+    pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 200, 200);
+
+    SDL_SetRenderTarget(pRenderer, pTexture);
+    //SDL_Rect rect3={50,50,300,300};
+    SDL_SetRenderDrawColor(pRenderer, 150, 0, 150, 255);
+
+
+    //SDL_RenderDrawLine(pRenderer,0,0,200,100);
+
+    SDL_RenderFillRect(pRenderer, &rect);
+    SDL_SetRenderTarget(pRenderer, NULL);
+    SDL_RenderCopy(pRenderer, pTexture, NULL, NULL);
+    SDL_RenderPresent(pRenderer);
+
+
+
+
 
 
 
     //Permet de garder le rendu de la page pendant x temps
-    SDL_Delay(10000);//1 sec
-    //Vérification si il y a bien une fenêtre
+    SDL_Delay(1000);//1 sec
+    //VÃ©rification si il y a bien une fenÃªtre
     if(pSurface){
         SDL_FreeSurface(pSurface);
     }
@@ -148,7 +182,7 @@ int main(int argc, char *argv[])
         SDL_DestroyRenderer(pRenderer);
     }
     if(pWindow){
-        //Détruire la fenêtre
+        //DÃ©truire la fenÃªtre
         SDL_DestroyWindow(pWindow);
     }
 
@@ -212,13 +246,13 @@ void DrawCircleFilled(int cx, int cy, int rayon){
 
     while(y>=x){
         SDL_RenderDrawLine(pRenderer,cx,cy,cx + x,cy + y);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx + y,cy + x);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - x,cy + y);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - y,cy + x);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx + x,cy - y);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx + y,cy - x);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - x,cy - y);
-        //SDL_RenderDrawLine(pRenderer,cx,cy,cx - y,cy - x);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx + y,cy + x);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx - x,cy + y);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx - y,cy + x);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx + x,cy - y);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx + y,cy - x);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx - x,cy - y);
+        SDL_RenderDrawLine(pRenderer,cx,cy,cx - y,cy - x);
 
         if(d<0){
             d=d+(4*x)+6;
