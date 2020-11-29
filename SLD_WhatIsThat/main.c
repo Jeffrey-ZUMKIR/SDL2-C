@@ -168,6 +168,14 @@ int main(int argc, char *argv[])
     SDL_RenderPresent(pRenderer);
 
 
+    //Les images
+    pSurface = SDL_LoadBMP("CyberdrunkPerso.bmp");
+    if(pSurface==NULL){
+        fprintf(stderr, "Erreur SDL_LoadBMP : %s", SDL_GetError());
+        return 1;
+    }
+
+
 
 
 
