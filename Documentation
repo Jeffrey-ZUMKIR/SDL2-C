@@ -172,3 +172,6 @@ Afficher une texture consiste à copier la texture sur le renderer puis à mettr
 -un pointeur sur un rectangle qui correspond à l’endroit du renderer où doit être copié la texture (en passant NULL, la texture remplira tout le renderer).
 La vraie texture n’est pas redimensionnée. Il s’agit d’un redimensionnement à la volée, au moment de la copie. Notre variable texture n’est pas modifiée.
 
+24)SDL_QueryTexture : A quoi sert cette méthode, donnez le code pour tester cette méthode.
+Pour afficher une texture dans ses vraies dimensions, il faut connaître ses dimensions. Si nous ne les avons pas, il est possible de les récupérer avec la fonction SDL_QueryTexture. Son prototype: int SDL_QueryTexture(SDL_Texture* texture,Uint32* format,int*access,int* µw,int* h).
+
