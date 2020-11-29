@@ -170,23 +170,25 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Erreur SDL_LoadBMP : %s", SDL_GetError());
         return 1;
     }
+    //Donner la surface à la texture
     pTexture=SDL_CreateTextureFromSurface(pRenderer,pSurface);
     if(pTexture==NULL){
         fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
         return 1;
     }
-
+    //Afficher la texture
     SDL_SetRenderTarget(pRenderer, pTexture);
-    //SDL_QueryTexture(pTexture,NULL,NULL,&pSurface->w,&pSurface->h);
     SDL_RenderCopy(pRenderer, pTexture, NULL, NULL);
     SDL_SetRenderTarget(pRenderer, NULL);
     SDL_RenderPresent(pRenderer);
 
-
-
     //Permet de garder le rendu de la page pendant x temps
     SDL_Delay(1000);//1 sec
-    //Vérification si il y a bien une fenêtre
+
+    //Libérer la mémoire
+    if(pTexture){
+        SDL_DestroyTexture(pTexture);
+    }
     if(pSurface){
         SDL_FreeSurface(pSurface);
     }

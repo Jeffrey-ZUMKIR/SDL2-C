@@ -183,3 +183,10 @@ Il nous faut passer par les textures. Il nous faut donc transformer notre surfac
 
 27)Prenez une image de votre choix au format bmp et testez les fonctions précédentes en ajoutant le code permettant d’afficher l’image dans le rendu.
 Voir code
+
+28)Depuis le début nous créons des instances permettant de manipuler la sdl2, cependant nous oublions une étape essentielle dans son utilisation, la destruction des instances, faites un relevé des instances crées et identifier les méthodes que vous devez utiliser pour libérer celles-ci.
+window:		SDL_DestroyWindow(pWindow);
+renderer:	SDL_DestroyRenderer(pRenderer);
+surface:	SDL_FreeSurface(pSurface);
+texture:	SDL_DestroyTexture(pTexture);
+
