@@ -181,3 +181,5 @@ Pour charger une image, nous allons utiliser la fonction SDL_LoadBMP. Elle prend
 26)Donnez le code permettant de créer une texture à partir d’une image (bmp).
 Il nous faut passer par les textures. Il nous faut donc transformer notre surface en texture, puis afficher la texture obtenue. Le passage de la surface à la texture se fait avec la fonction SDL_CreateTextureFromSurface. Elle prend en paramètre la surface qui nous permettra de créer la texture et le renderer auquel la texture créée doit être associée et retourne cette texture ou NULL en cas d’erreur. 
 
+27)Prenez une image de votre choix au format bmp et testez les fonctions précédentes en ajoutant le code permettant d’afficher l’image dans le rendu.
+Voir code

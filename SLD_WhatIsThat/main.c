@@ -152,15 +152,11 @@ int main(int argc, char *argv[])
     }​​​​*/
 
     //Les textures
-    pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 800, 800);
+    pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1024, 720);
 
     SDL_SetRenderTarget(pRenderer, pTexture);
     //SDL_Rect rect3={50,50,300,300};
     SDL_SetRenderDrawColor(pRenderer, 150, 0, 150, 255);
-
-
-    //SDL_RenderDrawLine(pRenderer,0,0,200,100);
-
     SDL_RenderFillRect(pRenderer, &rect);
     SDL_SetRenderTarget(pRenderer, NULL);
     SDL_QueryTexture(pTexture,NULL,NULL,&rect.w,&rect.h);
@@ -180,8 +176,11 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
-
+    SDL_SetRenderTarget(pRenderer, pTexture);
+    //SDL_QueryTexture(pTexture,NULL,NULL,&pSurface->w,&pSurface->h);
+    SDL_RenderCopy(pRenderer, pTexture, NULL, NULL);
+    SDL_SetRenderTarget(pRenderer, NULL);
+    SDL_RenderPresent(pRenderer);
 
 
 
