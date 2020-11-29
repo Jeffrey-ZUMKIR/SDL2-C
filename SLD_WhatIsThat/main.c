@@ -174,7 +174,11 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Erreur SDL_LoadBMP : %s", SDL_GetError());
         return 1;
     }
-
+    pTexture=SDL_CreateTextureFromSurface(pRenderer,pSurface);
+    if(pTexture==NULL){
+        fprintf(stderr, "Erreur SDL_CreateTextureFromSurface : %s", SDL_GetError());
+        return 1;
+    }
 
 
 

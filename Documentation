@@ -178,3 +178,6 @@ Pour afficher une texture dans ses vraies dimensions, il faut connaître ses dim
 25)Les Images : La SDL2 ne prend en charge nativement que les formats bmp, si vous souhaitez utiliser d’autres formats vous devrez associer la lib SDL2_image à votre projet. SDL_LoadBMP, est la méthode permettant d’utiliser des bmp, donnez le code permettant de tester cette fonction.
 Pour charger une image, nous allons utiliser la fonction SDL_LoadBMP. Elle prend en paramètre le chemin (relatif ou absolu) de l’image à charger et retourne une surface contenant cet objet ou NULL en cas d’erreur. On peut donc obtenir une surface contenant l’image grâce à SDL_LoadBMP. Il nous suffit de créer une texture à partir de cette image, et on peut ensuite l’afficher. Sans oublier de libérer la surface.
 
+26)Donnez le code permettant de créer une texture à partir d’une image (bmp).
+Il nous faut passer par les textures. Il nous faut donc transformer notre surface en texture, puis afficher la texture obtenue. Le passage de la surface à la texture se fait avec la fonction SDL_CreateTextureFromSurface. Elle prend en paramètre la surface qui nous permettra de créer la texture et le renderer auquel la texture créée doit être associée et retourne cette texture ou NULL en cas d’erreur. 
+
