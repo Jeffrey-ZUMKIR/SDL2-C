@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
     }​​​​*/
 
     //Les textures
-    pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 200, 200);
+    pTexture = SDL_CreateTexture(pRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 800, 800);
 
     SDL_SetRenderTarget(pRenderer, pTexture);
     //SDL_Rect rect3={50,50,300,300};

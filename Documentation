@@ -164,3 +164,11 @@ SDL_TEXTUREACCESS_TARGET: La texture peut être utilisée comme cible de rendu (
 22)Dessinez dans une texture : SDL_RenderTarget, donnez le code pour tester cette méthode.
 Nous avons précédemment dit que si l’on utilisait la valeur SDL_TEXTUREACCESS_TARGET, c’était pour pouvoir utiliser notre texture comme un renderer. Pour être plus précis, c’est pour pouvoir utiliser notre texture comme cible (« target ») de rendu. En fait, nous allons utiliser les fonctions de dessin vu au chapitre précédent, mais la cible du rendu ne sera plus le renderer mais la texture. Pour changer la cible de rendu, nous allons utiliser la fonction SDL_SetRenderTarget. Elle prend en paramètre un renderer et une texture. Elle retourne 0 en cas de succès et une valeur négative en cas d’erreur. Ensuite, après lui avoir fait nos dessins avec le texture, on remet le renderer en tant que cible de rendu. Avec ça rien ne s'affiche mais le dessin est fait sur le renderer.
 
+23)SDL_RenderCopy : A quoi sert cette méthode, donnez le code pour tester cette méthode.
+Afficher une texture consiste à copier la texture sur le renderer puis à mettre à jour le renderer. Ainsi, on verra bien la texture à l’écran. La copie de la texture se fait avec la fonction SDL_RenderCopy. Elle prend en paramètre :
+-le renderer sur lequel doit être fait la copie ;
+-la texture à copier ;
+-un pointeur sur un rectangle qui correspond à la partie de la texture à copier (en passant NULL, on copie toute la texture) ;
+-un pointeur sur un rectangle qui correspond à l’endroit du renderer où doit être copié la texture (en passant NULL, la texture remplira tout le renderer).
+La vraie texture n’est pas redimensionnée. Il s’agit d’un redimensionnement à la volée, au moment de la copie. Notre variable texture n’est pas modifiée.
+
